@@ -6,6 +6,23 @@
 #include "proc.h"
 #include "defs.h"
 
+uint64 dump() {
+    struct proc *curr_proc =  myproc();
+    printf("\n\nRegisters state.\n");
+    printf("s2: %d\n", curr_proc->trapframe->s2);
+    printf("s3: %d\n", curr_proc->trapframe->s3);
+    printf("s4: %d\n", curr_proc->trapframe->s4);
+    printf("s5: %d\n", curr_proc->trapframe->s5);
+    printf("s6: %d\n", curr_proc->trapframe->s6);
+    printf("s7: %d\n", curr_proc->trapframe->s7);
+    printf("s8: %d\n", curr_proc->trapframe->s8);
+    printf("s9: %d\n", curr_proc->trapframe->s9);
+    printf("s10: %d\n", curr_proc->trapframe->s10);
+    printf("s11: %d\n", curr_proc->trapframe->s11);
+    printf("\n\n");
+    return 0;
+}
+
 struct cpu cpus[NCPU];
 
 struct proc proc[NPROC];
