@@ -26,7 +26,8 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
-void dump();
+uint64 dump();
+uint64 dump2(int pid, int register_num, uint64 *return_value);
 
 // ulib.c
 int stat(const char*, struct stat*);

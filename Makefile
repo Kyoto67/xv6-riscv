@@ -111,6 +111,11 @@ $U/_dumptests: $U/dumptests.c $U/dumptests.S $(ULIB)
 	$(CC) $(CFLAGS) -c -o $U/dumptests.o $U/dumptests.c
 	$(LD) $(LDFLAGS) -N -e main -Ttext 0 -o $U/_dumptests $U/dumptests.o $U/dumptests_asm.o $(ULIB)
 
+$U/_dump2tests: $U/dump2tests.c $U/dump2tests.S $(ULIB)
+	$(CC) $(CFLAGS) -c -o $U/dump2tests_asm.o $U/dump2tests.S
+	$(CC) $(CFLAGS) -c -o $U/dump2tests.o $U/dump2tests.c
+	$(LD) $(LDFLAGS) -N -e main -Ttext 0 -o $U/_dump2tests $U/dump2tests.o $U/dump2tests_asm.o $(ULIB)
+
 mkfs/mkfs: mkfs/mkfs.c $K/fs.h $K/param.h
 	gcc -Werror -Wall -I. -o mkfs/mkfs mkfs/mkfs.c
 
