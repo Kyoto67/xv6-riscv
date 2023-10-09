@@ -68,9 +68,7 @@ uint64 dump2(int pid, int register_num, uint64 *return_value) {
 uint64 mydiv(int first, int second, uint64 *return_value) {
     uint64 result = 0.0;
     if ( second == 0 ) {
-//        printf(">>> Division by zero <<<\n");
-//        usertrapret();
-//        printf("[ERROR]");
+        divbyzero();
         return -1;
     }
 
@@ -87,7 +85,7 @@ uint64 mydiv(int first, int second, uint64 *return_value) {
         }
         return 0;
     }
-    return 3;
+    return -3;
 }
 
 struct cpu cpus[NCPU];

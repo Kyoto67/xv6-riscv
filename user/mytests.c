@@ -44,9 +44,9 @@ void test2() {
     printf("test 2 started\n");
     int error = mydiv(1, 0, &value);
     if (error == -1) {
-        printf("[ERROR] division by zero.\n");
-        success++;
+        printf("[ERROR] interrupt hasn't been reached.\n");
         return;
     }
+    success++;
     printf("test 2 finished\n");
 }
