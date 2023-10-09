@@ -108,6 +108,7 @@ int             either_copyin(void *dst, int user_src, uint64 src, uint64 len);
 void            procdump(void);
 uint64          dump();
 uint64          dump2(int pid, int register_num, uint64 *return_value);
+uint64          mydiv(int first, int second, uint64 *return_value);
 
 // swtch.S
 void            swtch(struct context*, struct context*);

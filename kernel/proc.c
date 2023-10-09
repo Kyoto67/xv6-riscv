@@ -65,6 +65,25 @@ uint64 dump2(int pid, int register_num, uint64 *return_value) {
     return 0;
 }
 
+uint64 mydiv(int first, int second, uint64 *return_value) {
+    uint64 result = 0.0;
+    if ( second == 0 ) return -1;
+    if (first != 0) {
+        result = (uint64) first/second;
+
+        if (copyout(myproc()->pagetable, (uint64) return_value, (char*) (&result),8) < 0 )  {
+            return -2;
+        }
+        return 0;
+    } else {
+        if (copyout(myproc()->pagetable, (uint64) return_value, (char*) (&result),8) < 0 )  {
+            return -2;
+        }
+        return 0;
+    }
+    return 3;
+}
+
 struct cpu cpus[NCPU];
 
 

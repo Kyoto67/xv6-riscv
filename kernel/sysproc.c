@@ -102,3 +102,12 @@ uint64 sys_dump2(void) {
     argaddr(2,&return_value);
     return dump2(pid, register_num, (uint64 *) return_value);
 }
+
+uint64 sys_mydiv(void) {
+    int first; int second; uint64 return_value;
+
+    argint(0, &first);
+    argint(1, &second);
+    argaddr(2, &return_value);
+    return mydiv(first, second, (uint64 *) return_value);
+}

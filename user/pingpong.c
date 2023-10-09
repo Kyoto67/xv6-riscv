@@ -7,8 +7,10 @@
 #define EXIT_FAILURE 1
 typedef int pid_t;
 
-int main() {
-    int pipe_fd[2]; // Дескрипторы конца пайпа
+int
+main(void)
+{
+    int pipe_fd[2];
 
     if (pipe(pipe_fd) == -1) {
         fprintf(2, "pipe_err");
@@ -18,17 +20,17 @@ int main() {
     char buf[512];
     pid_t pid = fork();
 
-    if(pid > 0){
+    if (pid > 0) {
         //parent
-        write(pipe_fd[1],"ping",4);
-        read(pipe_fd[0],buf,sizeof buf);
-        printf("%d: got %s\n",getpid(),buf);
+        write(pipe_fd[1], "ping", 4);
+        read(pipe_fd[0], buf, sizeof buf);
+        printf("%d: got %s\n", getpid(), buf);
         exit(0);
-    } else if(pid == 0){
+    } else if (pid == 0) {
         //child
-        read(pipe_fd[0], buf,sizeof buf);
-        printf("%d: got %s\n",getpid(),buf);
-        write(pipe_fd[1],"pong",4);
+        read(pipe_fd[0], buf, sizeof buf);
+        printf("%d: got %s\n", getpid(), buf);
+        write(pipe_fd[1], "pong", 4);
         exit(0);
     } else {
         fprintf(2, "fork_err");
@@ -36,5 +38,4 @@ int main() {
     }
 
     return 0;
-
 }
