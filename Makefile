@@ -28,11 +28,13 @@ OBJS = \
   $K/sysfile.o \
   $K/kernelvec.o \
   $K/plic.o \
-  $K/virtio_disk.o
+  $K/virtio_disk.o \
+  $K/buddy.o \
+  $K/list.o
 
 # riscv64-unknown-elf- or riscv64-linux-gnu-
 # perhaps in /opt/riscv/bin
-TOOLPREFIX = /home/kyoto/workspace/OS/sc-dt/riscv-gcc/bin/riscv64-unknown-elf-
+TOOLPREFIX = /usr/local/bin/riscv64-unknown-elf-
 
 # Try to infer the correct TOOLPREFIX if not set
 ifndef TOOLPREFIX
@@ -146,6 +148,7 @@ UPROGS=\
 	$U/_dumptests\
 	$U/_dump2tests\
 	$U/_mytests\
+	$U/_alloctest
 
 
 fs.img: mkfs/mkfs README $(UPROGS)
